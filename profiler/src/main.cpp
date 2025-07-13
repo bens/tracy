@@ -861,7 +861,11 @@ static void DrawContents()
             ImGui::SameLine();
             ImGui::SeparatorEx( ImGuiSeparatorFlags_Vertical );
             ImGui::SameLine();
+            #ifdef TRACY_REPRODUCIBLE
+            tracy::TextFocused( "Build date", "??? ?? ????" ", " "??:??:??" );
+            #else
             tracy::TextFocused( "Build date", __DATE__ ", " __TIME__ );
+            #endif
             ImGui::PopFont();
             ImGui::EndPopup();
         }
